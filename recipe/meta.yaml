@@ -1,9 +1,9 @@
 {% set name = "libnvfatbin" %}
 {% set version = "12.8.90" %}
 {% set cuda_version = "12.8" %}
-{% set platform = "linux-x86_64" %}    # [linux64]
-{% set platform = "linux-ppc64le" %}   # [ppc64le]
-{% set platform = "linux-sbsa" %}      # [aarch64]
+{% set platform = "linux-x86_64" %}  # [linux64]
+{% set platform = "linux-ppc64le" %}  # [ppc64le]
+{% set platform = "linux-sbsa" %}  # [aarch64]
 {% set platform = "windows-x86_64" %}  # [win]
 {% set target_name = "x86_64-linux" %}  # [linux64]
 {% set target_name = "ppc64le-linux" %}  # [ppc64le]
@@ -23,7 +23,7 @@ source:
   sha256: ddbd534b9c44749f83c772fc640a180399fcf43653183e35c1024aa18d2ee88e  # [win]
 
 build:
-  number: 0
+  number: 1
   binary_relocation: false
   skip: true  # [osx or ppc64le]
 
