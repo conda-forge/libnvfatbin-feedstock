@@ -3,11 +3,13 @@
 {% set cuda_version = "12.9" %}
 {% set platform = "linux-x86_64" %}  # [linux64]
 {% set platform = "linux-ppc64le" %}  # [ppc64le]
-{% set platform = "linux-sbsa" %}  # [aarch64]
+{% set platform = "linux-sbsa" %}  # [aarch64 and arm_variant_type=="sbsa"]
+{% set platform = "linux-aarch64" %}  # [aarch64 and arm_variant_type=="tegra"]
 {% set platform = "windows-x86_64" %}  # [win]
 {% set target_name = "x86_64-linux" %}  # [linux64]
 {% set target_name = "ppc64le-linux" %}  # [ppc64le]
-{% set target_name = "sbsa-linux" %}  # [aarch64]
+{% set target_name = "sbsa-linux" %}  # [aarch64 and arm_variant_type=="sbsa"]
+{% set target_name = "aarch64-linux" %}  # [aarch64 and arm_variant_type=="tegra"]
 {% set target_name = "x64" %}  # [win]
 {% set extension = "tar.xz" %}  # [not win]
 {% set extension = "zip" %}  # [win]
@@ -19,11 +21,12 @@ package:
 source:
   url: https://developer.download.nvidia.com/compute/cuda/redist/{{ name }}/{{ platform }}/{{ name }}-{{ platform }}-{{ version }}-archive.{{ extension }}
   sha256: 315be969a303437329bf72d7141babed024fc54f90a10aa748b03be8f826d57b  # [linux64]
-  sha256: 87bf71288ea7390d039b246fa794cad2ddd3b164ce9566f8542bb15039432cdb  # [aarch64]
+  sha256: 87bf71288ea7390d039b246fa794cad2ddd3b164ce9566f8542bb15039432cdb  # [aarch64 and arm_variant_type=="sbsa"]
+  sha256: 248e77ede9afbd6060cda7de0475d222731ac021e22e696ce75ed72b426dfca9  # [aarch64 and arm_variant_type=="tegra"]
   sha256: 86563b25096bbc21d74b1c043701ec8596499f76b40e32f9ec9179fc10404d00  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [osx or ppc64le]
 
 requirements:
@@ -49,7 +52,6 @@ outputs:
         - cuda-version {{ cuda_version }}
       run:
         - {{ pin_compatible("cuda-version", max_pin="x.x") }}
-      run_constrained:
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
     test:
       requires:
@@ -96,8 +98,8 @@ outputs:
       run:
         - {{ pin_compatible("cuda-version", max_pin="x.x") }}
         - {{ pin_subpackage("libnvfatbin", exact=True) }}
-      run_constrained:
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
+      run_constrained:
         - liblibnvfatbin-static >={{ version }}
     test:
       commands:
@@ -132,7 +134,6 @@ outputs:
         - cuda-version {{ cuda_version }}
       run:
         - {{ pin_compatible("cuda-version", max_pin="x.x") }}
-      run_constrained:
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
     test:
       commands:
