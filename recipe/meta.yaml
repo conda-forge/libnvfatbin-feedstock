@@ -51,7 +51,7 @@ outputs:
       host:
         - cuda-version {{ cuda_version }}
       run:
-        - {{ pin_compatible("cuda-version", max_pin="x.x") }}
+        - {{ pin_compatible("cuda-version", min_pin="x", max_pin="x.x") }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
     test:
       requires:
@@ -96,7 +96,7 @@ outputs:
       host:
         - cuda-version {{ cuda_version }}
       run:
-        - {{ pin_compatible("cuda-version", max_pin="x.x") }}
+        - {{ pin_compatible("cuda-version", min_pin="x", max_pin="x.x") }}
         - {{ pin_subpackage("libnvfatbin", exact=True) }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
       run_constrained:
@@ -133,7 +133,7 @@ outputs:
       host:
         - cuda-version {{ cuda_version }}
       run:
-        - {{ pin_compatible("cuda-version", max_pin="x.x") }}
+        - {{ pin_compatible("cuda-version", min_pin="x", max_pin="x.x") }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
     test:
       commands:
