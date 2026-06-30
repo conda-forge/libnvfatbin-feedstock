@@ -100,7 +100,7 @@ outputs:
         - {{ pin_subpackage("libnvfatbin", exact=True) }}
         - arm-variant * {{ arm_variant_type }}  # [aarch64]
       run_constrained:
-        - liblibnvfatbin-static >={{ version }}
+        - libnvfatbin-static >={{ version }}
     test:
       commands:
         - test -L $PREFIX/lib/libnvfatbin.so                                  # [linux]
