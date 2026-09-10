@@ -47,73 +47,31 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-How to use
-----------
-
-<details>
-<summary>With conda</summary>
+Once the `conda-forge` channel has been enabled, `libnvfatbin, libnvfatbin-dev, libnvfatbin-static` can be installed with `conda`:
 
 ```
 conda install libnvfatbin libnvfatbin-dev libnvfatbin-static
 ```
 
-</details>
-
-<details>
-<summary>With mamba</summary>
+or with `mamba`:
 
 ```
 mamba install libnvfatbin libnvfatbin-dev libnvfatbin-static
 ```
 
-</details>
-
-<details>
-<summary>With pixi</summary>
-
-```
-# for adding to your local project
-pixi add libnvfatbin libnvfatbin-dev libnvfatbin-static
-# for installing globally
-pixi global install libnvfatbin libnvfatbin-dev libnvfatbin-static
-```
-
-</details>
-
-Search package versions
------------------------
-
-It is possible to list all of the versions of `libnvfatbin` available on your platform:
-
-<details>
-<summary>With conda</summary>
+It is possible to list all of the versions of `libnvfatbin` available on your platform with `conda`:
 
 ```
 conda search libnvfatbin --channel conda-forge
 ```
 
-</details>
-
-<details>
-<summary>With mamba</summary>
+or with `mamba`:
 
 ```
 mamba search libnvfatbin --channel conda-forge
 ```
 
-</details>
-
-<details>
-<summary>With pixi</summary>
-
-```
-pixi search libnvfatbin --channel conda-forge
-```
-
-</details>
-
-<details>
-<summary>With mamba repoquery, which may provide more information</summary>
+Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
@@ -125,8 +83,6 @@ mamba repoquery whoneeds libnvfatbin --channel conda-forge
 # List dependencies of `libnvfatbin`:
 mamba repoquery depends libnvfatbin --channel conda-forge
 ```
-
-</details>
 
 
 About conda-forge
