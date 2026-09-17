@@ -1,5 +1,5 @@
 {% set name = "libnvfatbin" %}
-{% set version = "13.4.49" %}
+{% set version = "13.4.92" %}
 {% set cuda_version = "13.4" %}
 {% set platform = "linux-x86_64" %}  # [linux64]
 {% set platform = "linux-ppc64le" %}  # [ppc64le]
@@ -13,10 +13,10 @@
 {% set target_name = "arm64" %}  # [win and arm64]
 {% set extension = "tar.xz" %}  # [not win]
 {% set extension = "zip" %}  # [win]
-{% set sha256 = "83774b25cd54caefae9e9e1e9d7007d18589ee81a11565dc7cafcd12c6114dba" %}  # [linux64]
-{% set sha256 = "7c357a4bf4ec67ed76e26957b5fec3ed8908191f4acedd3bdf323b66a093e190" %}  # [aarch64]
-{% set sha256 = "831af09019e56b54bc4d4364a0cf7947c688acb05e186a52f8c73662cbeb4a42" %}  # [win64]
-{% set sha256 = "051f45e597a595b474f39b7cf82872cfefdba80d762cfa57ae9ed9f36d7d3d86" %}  # [win and arm64]
+{% set sha256 = "6a0658b50662dabaaf45e55dc2938493367767191c0264b0ad1437a7d39e2b6c" %}  # [linux64]
+{% set sha256 = "928c0151ae9c586095788adffc57cc1670797ecdb38d9eeb796c927a60e13e09" %}  # [aarch64]
+{% set sha256 = "2b70bd761095296ec17781586e4541a2037d3d813d45f8c22a3420917f177d89" %}  # [win64]
+{% set sha256 = "4bc6cab2b4fc5dcb96fd9b2fa5342a7b500bbadf0454eb3d7621501c7eb3871d" %}  # [win and arm64]
 
 package:
   name: {{ name|lower }}-split
@@ -27,7 +27,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [osx or ppc64le]
 
 requirements:
